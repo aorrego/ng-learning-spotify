@@ -44,6 +44,10 @@
     gap: .5rem
 }
 
+.media-player--wrapper .artist .artist-inside .album-cover {
+    width: 90px;
+}
+
 .media-player--wrapper .artist .track-like {
     display: flex;
     flex-direction: column;

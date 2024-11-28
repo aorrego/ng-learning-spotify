@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
 
-export const favoritesRoutes: Routes = [];
+export const routes: Routes = [];
  

@@ -10,6 +10,6 @@ export const appRoutes: Routes = [
   {
     path: '', 
     component: HomePageComponent,
-    loadChildren: () => import(`./modules/home/home.routes`).then( m => m.homeRoutes) 
+    loadChildren: () => import(`./modules/home/home.routes`).then( m => m.routes) 
   }
 ];

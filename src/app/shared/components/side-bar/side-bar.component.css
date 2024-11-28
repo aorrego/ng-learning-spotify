@@ -5,8 +5,9 @@
     top: 0;
     left: 0;
     padding: .5rem 1rem;
-    background-color: red;
+    /* background-color: red; */
 }
+
 .side-bar__list {
     list-style: none;
     padding: 0;
@@ -31,10 +32,19 @@
     font-size: var(--font-size-3);
     padding-right: .5rem;
 }
+
+.side-bar__separator {
+    margin: 1rem 0;
+}
+
 .side-bar__separator.line-separator {
     border-bottom: solid 1px var(--color-2);
 }
 
-.side-bar__list-three .list-wrapper-item {
+.side-bar__list.list-three .list-wrapper-item {
     padding: .25rem 0;
+}
+
+.side-bar__list li {
+    cursor: pointer;
 }
