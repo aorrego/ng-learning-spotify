@@ -7,11 +7,27 @@ import { TrackModel } from '@core/models/tracks.model';
 })
 export class OrderListPipe implements PipeTransform {
 
-  transform(value: TrackModel[], args: string | null = null, sort: string = 'asc')  : TrackModel[] {
-    console.log('->', value);
-    console.log('args: ', args);
-    console.log('sort: ', sort)
-    return value;
-  }
+  transform(value: any[], args: string | null = null, sort: string = 'asc')  : TrackModel[] {
+    try {
+      if(args === null)
+        return value;
+      else {
+        const tmpList = value.sort( (a, b) => {
+          if(a[args] < b[args])
+            return -1;
+          else if(a[args] === b[args])
+            return 0;
+          else if(a[args] > b[args])
+            return 1;
+          return 1;
+        });
+        
+        return (sort === 'asc') ? tmpList : tmpList.reverse();
 
+      }
+    } catch (e) {
+        console.log('error: ', e);
+        return value;
+    }
+  }
 }

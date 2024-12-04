@@ -13,9 +13,18 @@ import { OrderListPipe } from "../../pipe/order-list.pipe";
 })
 export class PlayListBodyComponent {
   tracks: Array<TrackModel> = [];
-
+  optionSort: {property: string | null, order:string} = {property: null, order: 'asc'}
   ngOnInit(): void {
     const {data}: any = (dataRaw as any).default;
     this.tracks = data;
+  }
+
+  changeSort(property: string){
+    const {order} = this.optionSort;
+    this.optionSort = {
+      property,
+      order: order === 'asc' ? 'desc' : 'asc'
+    }
+    console.log(this.optionSort);
   }
 }
