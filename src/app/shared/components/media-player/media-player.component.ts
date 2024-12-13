@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
+import { MultimediaService } from '@shared/services/multimedia.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-media-player',
@@ -17,4 +19,23 @@ export class MediaPlayerComponent {
     album: 'Heaven and Hell',
     name: 'Heaven & Hell'
   };
+
+  listObservers$:Array<Subscription> = [];
+  constructor(private multimediaService: MultimediaService){ }
+
+  ngOnInit(): void {
+    const observer1$: Subscription = this.multimediaService.callback.subscribe(
+      (response: TrackModel) => {
+        console.log('Recibiendo canción...', response);
+      }
+    );
+
+    this.listObservers$ = [observer1$]
+  }
+
+  ngOnDestroy(): void {
+    console.log('Componente destruido');
+
+    this.listObservers$.forEach( u => u.unsubscribe());
+  }
 }
